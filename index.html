@@ -1,0 +1,125 @@
+<style>
+.searchbox {
+  width:clamp(50%,250px,90%);
+  height:45px;
+  padding:0px;
+  margin:0px;
+  background:#fff;
+  box-shadow: 0px 0px 18px 2px rgba(0,0,0,0.13);
+  position:absolute;
+  top:35%;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:15px
+}
+.searchinput {
+  width:calc(100% - 60px);
+  height:25px;
+  padding:0px;
+  margin:0px;
+  position:absolute;
+  top:10px;
+  left:10px;
+  border:none;
+  border-radius:0px;
+  font-size:15px;
+  
+-webkit-appearance:none;
+outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.searchtitle {
+  position:absolute;
+  top:calc(35% - 45px);
+  left:50%;
+  transform:translateX(-50%);
+  height:45px;
+  font-size:25px
+}
+.searchbtn {
+  position:absolute;
+  top:0px;
+  right:0px;
+  width:45px;
+  height:45px;
+  display: flex;
+justify-content: center;
+align-items: center;
+}
+.searchbtn svg {
+  width:25px;
+  height:25px;
+}
+
+.result {
+  width:clamp(50%,250px,90%);
+  height:auto;
+  min-height:100px;
+  position:absolute;
+  top:calc(35% + 60px);
+  left:50%;
+  transform:translateX(-50%);
+}
+</style>
+<div class="searchtitle">
+  小說搜尋
+</div>
+<div class="searchbox">
+  <input type="text" class="searchinput" placeholder="輸入關鍵字">
+  <div class="searchbtn">
+<svg stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M224.944 33.2778C120.5 33.2778 36.0556 117.722 36.0556 222.167C36.0556 326.611 120.5 411.056 224.944 411.056C329.389 411.056 413.833 326.611 413.833 222.167C413.833 117.722 329.389 33.2778 224.944 33.2778ZM224.944 366.611C144.944 366.611 80.5 302.167 80.5 222.167C80.5 142.167 144.944 77.7222 224.944 77.7222C304.944 77.7222 369.389 142.167 369.389 222.167C369.389 302.167 304.944 366.611 224.944 366.611Z" fill="#000000" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M328.167 330.944L475.944 478.722" fill="none" fill-rule="evenodd" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="46.2307"/>
+</svg>
+  </div>
+</div>
+
+<div class="result">
+  
+<script async src="https://cse.google.com/cse.js?cx=b05e9154d83144bfe"></script>
+<div class="gcse-searchresults-only"></div>
+
+</div>
+
+<script>
+var getUrlString = location.href;
+var url = new URL(getUrlString);
+var searchquery = url.searchParams.get('q');
+
+
+function updateURLParameter(url, param, paramVal){
+    var newAdditionalURL = "";
+    var tempArray = url.split("?");
+    var baseURL = tempArray[0];
+    var additionalURL = tempArray[1];
+    var temp = "";
+    if (additionalURL) {
+        tempArray = additionalURL.split("&");
+        for (var i=0; i<tempArray.length; i++){
+            if(tempArray[i].split('=')[0] != param){
+                newAdditionalURL += temp + tempArray[i];
+                temp = "&";
+            }
+        }
+    }
+
+    var rows_txt = temp + "" + param + "=" + paramVal;
+    return baseURL + "?" + newAdditionalURL + rows_txt;
+}
+
+if(!(searchquery === null)) {
+  document.querySelector('.searchinput').value = searchquery
+}
+
+document.querySelector('.searchinput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      if(location.href.indexOf('?') > -1) {
+        location.href = (updateURLParameter(location.href,'q',encodeURIComponent(document.querySelector('.searchinput').value))).replaceAll('#','&')
+      }
+      else {
+        location.href = (location.href + '?q=' + encodeURIComponent(document.querySelector('.searchinput').value)).replaceAll('#','&')
+      }
+      
+    }
+});
+</script>
+
