@@ -116,10 +116,10 @@ if(!(searchquery === null)) {
 document.querySelector('.searchinput').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
       if(location.href.indexOf('?') > -1) {
-        location.href = (updateURLParameter(location.href,'q',encodeURIComponent(document.querySelector('.searchinput').value))).replaceAll('#','&')
+        location.href = (updateURLParameter('https://erichsia7.github.io/fiction-search/','q',encodeURIComponent(document.querySelector('.searchinput').value))).replaceAll('#','&')
       }
       else {
-        location.href = (updateURLParameter(location.href,'q',encodeURIComponent(document.querySelector('.searchinput').value))).replaceAll('#','&')
+        location.href = (updateURLParameter('https://erichsia7.github.io/fiction-search/','q',encodeURIComponent(document.querySelector('.searchinput').value))).replaceAll('#','&')
       }
       
     }
