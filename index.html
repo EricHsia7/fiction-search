@@ -119,7 +119,7 @@ document.querySelector('.searchinput').addEventListener('keypress', function (e)
         location.href = (updateURLParameter(location.href,'q',encodeURIComponent(document.querySelector('.searchinput').value))).replaceAll('#','&')
       }
       else {
-        location.href = (location.href + '?q=' + encodeURIComponent(document.querySelector('.searchinput').value)).replaceAll('#','&')
+        location.href = (updateURLParameter(location.href,'q',encodeURIComponent(document.querySelector('.searchinput').value))).replaceAll('#','&')
       }
       
     }
